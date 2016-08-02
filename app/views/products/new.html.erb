@@ -1,5 +1,13 @@
-<h1>New Product</h1>
+<% if can? :manage, Product %>
 
-<%= render 'form' %>
+	<div class="row">
+	  <div class="col-md-8 col-md-offset-2">
+			<h1>Enter New Product Details</h1>
 
-<%= link_to 'Back', products_path %>
+			<%= render 'form' %>
+
+			<%= link_to 'Back', products_path %>
+		</div>
+	</div>
+
+<% end %>

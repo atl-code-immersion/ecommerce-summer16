@@ -1,5 +1,3 @@
-<p id="notice"><%= notice %></p>
-
 <p>
   <strong>Name:</strong>
   <%= @product.name %>
@@ -32,8 +30,22 @@
 
 <p>
   <strong>Category:</strong>
-  <%= @product.category_id %>
+  <%= @product.category.name %>
 </p>
 
-<%= link_to 'Edit', edit_product_path(@product) %> |
-<%= link_to 'Back', products_path %>
+<% if (user_signed_in?) && (can? :manage, Product) %>
+  <%= link_to 'Edit', edit_product_path(@product) %> |
+  <%= link_to 'Back', products_path %>
+<% end %>
+
+<p id="notice"><%= notice %></p>
+<% if @product.quantity > 0 %>
+  <p>
+    <%= form_tag add_to_cart_path do %>
+      <%= hidden_field_tag :product_id, @product.id %>
+      <%= number_field_tag :quantity, nil, placeholder: "How Many?" %>
+      <%= submit_tag "Add to Cart", class: "btn btn-primary" %>
+    <% end %>
+  </p>
+<% end %>
+

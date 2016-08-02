@@ -25,7 +25,17 @@
 		        <p><%= product.description %></p>
 		      </div>
 		      <div class="modal-footer">
-		        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+		        <p>
+		        	<% if product.quantity > 0 %>
+			        	<%= form_tag add_to_cart_path do %>
+			        		<%= hidden_field_tag :product_id, product.id %>
+			        		<%= number_field_tag :quantity, nil, placeholder: "How Many?" %>
+			        		<%= submit_tag "Add to Cart", class: "btn btn-primary" %>
+			        	<% end %>
+			        <% else %>
+			        	SOLD OUT!
+			        <% end %>
+		        </p>
 		      </div>
 		    </div>
 		  </div>

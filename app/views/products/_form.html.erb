@@ -1,3 +1,4 @@
+
 <%= form_for(@product) do |f| %>
   <% if @product.errors.any? %>
     <div id="error_explanation">
@@ -12,31 +13,26 @@
   <% end %>
 
   <div class="form-group">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
+    <%= f.text_field :name, placeholder: "Product Name", class: "form-control" %>
   </div>
   <div class="form-group">
-    <%= f.label :price %><br>
-    <%= f.text_field :price %>
+    <%= f.text_field :price, placeholder: "Price", class: "form-control" %>
   </div>
   <div class="form-group">
-    <%= f.label :quantity %><br>
-    <%= f.number_field :quantity %>
+    <%= f.number_field :quantity, placeholder: "Quantity In Stock", class: "form-control" %>
   </div>
   <div class="form-group">
-    <%= f.label :description %><br>
-    <%= f.text_area :description %>
+    <%= f.text_area :description, placeholder: "Product Description", class: "form-control" %>
   </div>
   <div class="form-group">
-    <%= f.label :brand %><br>
-    <%= f.text_field :brand %>
+    <%= f.text_field :brand, placeholder: "Brand Name", class: "form-control" %>
   </div>
   <!-- <div class="field"> -->
     <%#= f.label :rating %><!-- <br> -->
     <%#= f.number_field :rating %>
   <!-- </div> -->
   <div class="form-group">
-    <%= f.select :category_id, @categories.collect {|c| [c.name, c.id]}, { include_blank: "Please Select a Category"} %>
+    <%= f.select :category_id, @categories.collect {|c| [c.name, c.id]}, { include_blank: "Please Select a Category"}, class: "form-control" %>
   </div>
   <div class="form-group">
     <strong>Upload Product Image: </strong>
@@ -44,6 +40,7 @@
   </div>
 
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit class: "btn btn-primary" %>
   </div>
 <% end %>
+

@@ -1,6 +1,14 @@
-<h1>Editing Product</h1>
+<% if can? :manage, Product %>
 
-<%= render 'form' %>
+	<div class="row">
+	  <div class="col-md-8 col-md-offset-2">
+			<h1>Update Product Details</h1>
 
-<%= link_to 'Show', @product %> |
-<%= link_to 'Back', products_path %>
+			<%= render 'form' %>
+
+			<%= link_to 'Show', @product %> |
+			<%= link_to 'Back', products_path %>
+		</div>
+	</div>
+	
+<% end %>

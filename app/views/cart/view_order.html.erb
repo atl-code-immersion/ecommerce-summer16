@@ -1,0 +1,35 @@
+<h2>My Cart</h2>
+
+<div>
+	<% @line_items.each_with_index do |line_item, index| %>
+		<ul>
+			<li><%= line_item.product.name %></li>
+			<li><%= number_to_currency line_item.product.price %></li>
+			<span id="notice"><%= notice %></span>
+			<li id="quantity<%= index %>">Qty: <%= line_item.quantity %> <a id="edit<%= index %>">Edit</a></li>
+			<span id="edit_form<%= index %>" class="invisible">
+				<%= form_tag edit_line_item_path do %>
+					<%= hidden_field_tag :id, line_item.id %>
+					<%= number_field_tag :quantity, line_item.quantity %>
+					<%= submit_tag "Change Quantity", class: "btn btn-warning" %>
+				<% end %>
+			</span>
+			<li>Subtotal: <%= number_to_currency line_item.line_item_total %></li>
+		</ul>
+		<%= link_to "Delete", delete_line_item_path(id: line_item.id) %>
+
+
+		<script>
+			$(document).ready(function(){
+				$("#edit<%= index %>").click(function(){
+					$("#quantity<%= index %>").addClass("invisible");
+					$("#edit_form<%= index %>").removeClass("invisible");
+				})
+			})
+		</script>
+	<% end %>
+</div>
+
+<div>
+	<%= link_to "Proceed to Checkout?", checkout_path, class: "btn btn-success" %>
+</div>
