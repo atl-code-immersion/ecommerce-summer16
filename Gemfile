@@ -11,6 +11,13 @@ gem 'bootstrap-sass'
 gem 'devise'
 gem 'carrierwave'
 gem 'cancancan'
+gem 'stripe', :git => 'https://github.com/stripe/stripe-ruby'
+
+# to avoid SSL errors on PCs:
+gem 'certified'
+
+gem 'figaro'
+
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .coffee assets and views
@@ -38,11 +45,14 @@ gem 'tzinfo-data'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
+gem 'better_errors', group: :development
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
 
 end
+
 
 group :development do
   # Access an IRB console on exception pages or by using <%= console %> in views
@@ -50,8 +60,6 @@ group :development do
 
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
-
-  gem 'better_errors'
   
 end
 

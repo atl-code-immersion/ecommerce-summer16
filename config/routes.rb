@@ -10,6 +10,8 @@ Rails.application.routes.draw do
 
   post 'edit_line_item' => 'cart#edit_line_item'
 
+  post 'order_complete' => 'cart#order_complete'
+
   devise_for :users
 
   root 'storefront#all_items'
